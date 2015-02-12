@@ -1,0 +1,226 @@
+% --------------------------------------------------------------------------- %
+% Poster for the ECCS 2011 Conference about Elementary Dynamic Networks.      %
+% --------------------------------------------------------------------------- %
+% Created with Brian Amberg's LaTeX Poster Template. Please refer for the     %
+% attached README.md file for the details how to compile with `pdflatex`.     %
+% --------------------------------------------------------------------------- %
+% $LastChangedDate:: 2011-09-11 10:57:12 +0200 (V, 11 szept. 2011)          $ %
+% $LastChangedRevision:: 128                                                $ %
+% $LastChangedBy:: rlegendi                                                 $ %
+% $Id:: poster.tex 128 2011-09-11 08:57:12Z rlegendi                        $ %
+% --------------------------------------------------------------------------- %
+\documentclass[a0paper,portrait]{baposter}
+
+\usepackage{relsize}		% For \smaller
+\usepackage{url}			% For \url
+\usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
+\usepackage[utf8x]{inputenc}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{pix/}}	% Root directory of the pictures 
+\tracingstats=2			% Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{headercol1}{RGB}{186,215,230}
+\definecolor{headercol2}{RGB}{80,80,80}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{186,215,230}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\typeout{Poster rendering started}
+
+%%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\background{
+	\begin{tikzpicture}[remember picture,overlay]%
+	\draw (current page.north west)+(-2em,2em) node[anchor=north west]
+	{\includegraphics[height=1.1\textheight]{background}};
+	\end{tikzpicture}
+}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+	grid=false,
+	% Option is left on true though the eyecatcher is not used. The reason is
+	% that we have a bit nicer looking title and author formatting in the headercol
+	% this way
+	%eyecatcher=false, 
+	borderColor=bordercol,
+	headerColorOne=headercol1,
+	headerColorTwo=headercol2,
+	headerFontColor=headerfontcol,
+	% Only simple background color used, no shading, so boxColorTwo isn't necessary
+	boxColorOne=boxcolor,
+	headershape=roundedright,
+	headerfont=\Large\sf\bf,
+	textborder=rectangle,
+	background=user,
+	headerborder=open,
+  boxshade=plain
+}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\sf\bf
+	Dinámica de pruebas en espaciotiempos con curvatura negativa
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\vspace{1em} Dr. César A. Terrero, Lic. M. A. Buen-Abad, J. M. Virrueta\\
+	{\smaller cterrero@ucol.mx, manuelbuenabadnajar@gmail.com, juliusmoreno@gmail.com}
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+% The logos are compressed a bit into a simple box to make them smaller on the result
+% (Wasn't able to find any bigger of them.)
+\setlength\fboxsep{0.1pt}
+\setlength\fboxrule{0.5pt}
+	\fbox{
+		\begin{minipage}{12em}
+			\includegraphics[width=12em,height=8em]{escudo.jpg}
+			%\includegraphics[width=4em,height=4em]{elte_logo} \\
+			%\includegraphics[width=10em,height=4em]{dynanets_logo}
+			%\includegraphics[width=4em,height=4em]{aitia_logo}
+		\end{minipage}
+	}
+}
+
+\headerbox{Motivación}{name=problem,column=0,row=0}
+{
+La correspondencia gauge/gravedad ha sido ampliamente usada como una ventana a la física de teorías del campo
+fuertemente acopladas pero también provee una nueva perspectiva a algunos de los misterios de la gravitación.
+
+Uno de los resultados más importantes del siglo XX es la identificación del papel que juega el estudio completo
+del espacio de fase en la caracterízación de un sistema. En vista de los éxitos obtenidos usando trayectorías
+clásicas de cuerdas en la correspondencia gauge/gravedad es natural pensar en el significado del espacio de fase
+completo.
+
+Este trabajo hace uso de una serie de herramientas propias del estudio de sistemas dinámicos para describir el 
+espacio de fase correspondiente a la dinámica de cuerdas y particulas en distintos espaciotiempos.
+
+\includegraphics[width=\linewidth,height=12em]{Dibujo.jpg}
+}
+
+\headerbox{Caos determinista}{name=definitions,column=0,below=problem}{
+Uno de los fenómenos más interesantes observados en sistemás dinámicos es el de caos, que está relacionado con 
+la imposibilidad práctica de predecir la evolución futura del sistema
+
+}
+
+\headerbox{Un caso interesante}{name=models,column=0,below=definitions}{
+Entre los casos estudiados, uno de los más interesantes, por presentar fuertes señales de comportamiento
+caótico es el correspondiente a un anillo en $\emph{Schwarzschild-AdS_5}$, un espaciotiempo con singularidad y
+curvatura negativa.
+
+La dinámica está dada por la acción de Polyakov:
+
+\begin{equation*}
+ \mathcal{L} = -\frac{1}{2\pi\alpha'}\sqrt{-g}g^{ab}G_{\mu \nu}\partial_a X^{\mu}\partial_b X^{\nu}
+\end{equation*}
+
+Las ecuaciones de movimiento son:
+\[
+ \dot r = fp_r
+\]
+\[
+ \dot p_r = -\frac{1}{2}(\frac{f'}{f}E^2 + f'p_r^2) + \frac{p_{\theta}^2}{r^3} + \frac{l^2}{r^3\cos^2\theta}
+ -r\sin^2\theta
+\]
+
+\begin{equation}
+ \dot \theta = \frac{p_\theta}{r^2}
+\end{equation}
+
+\begin{equation}
+ \dot p_{\theta} = \frac{l^2}{r^2}\frac{\sin\theta}{\cos^3\theta} - r^2\sin\theta\cos\theta
+\end{equation}
+
+\begin{equation}
+ f(r) = 1 + \frac{r^2}{b^2} - \frac{w_4M}{r^2}
+\end{equation}
+
+
+
+}
+
+\headerbox{References}{name=references,column=0,below=models}{
+\smaller													% Make the whole text smaller
+\vspace{-0.4em} 										% Save some space at the beginning
+\bibliographystyle{plain}							% Use plain style
+\renewcommand{\section}[2]{\vskip 0.05em}		% Omit "References" title
+\begin{thebibliography}{1}							% Simple bibliography with widest label of 1
+\itemsep=-0.01em										% Save space between the separation
+\setlength{\baselineskip}{0.4em}					% Save space with longer lines
+\bibitem{original} Leopoldo A. Pando Sayas, César A. Terrero Escalante: 
+\emph{Chaos in the Gauge/Gravity Correspondence}, Michigan Center for Theoretical Physics, The University of Michigan
+Ann Arbor; Facultad de Ciencias, Universidad de Colima
+
+\end{thebibliography}
+}
+
+
+
+\headerbox{Espacio de fase para $Schwarzschild-AdS_5$}{name=density,span=2,column=1,row=0}{
+Debido a la complejidad el espacio de fase y a la lata dimensionalidad del sistema, es imposible obtener un 
+gráfico único del espacio de fase, en su lugar obtenemos proyecciones del mismo y a su vez realizamos estudios
+como el máximo exponente de Lyapunov, el mapeo de Poincaré, y el espectro de potencias, que en conjunto permiten
+darnos una idea del nivel de caos que presenta el sistema.
+
+\begin{center}
+	\includegraphics[width=0.35\linewidth]{prvsr.jpg}
+	\includegraphics[,width=0.35\linewidth]{PS.jpg}
+\end{center}
+
+\begin{center}
+	\includegraphics[width=0.35\linewidth]{LLEvsT.jpg}
+	\includegraphics[,width=0.35\linewidth]{spectrum.jpg}
+\end{center}
+
+
+}
+
+\headerbox{Cuencas de atracción}
+{name=degreeDistribution,span=2,column=1,below=density,above=bottom}
+{
+Ya que el espaciotiempo presenta una singularidad existe la posibilidad de que los anillos caigan en ella o que
+describan orbitas alrededor de ellas, los siguientes gráficos muestran la dependencia de esos dos resultados
+de las condiciones iniciales, en rojo se indica caida en la singularidad y en verde las órbitas.
+\vspace{-0.2em}
+\begin{center}
+	\includegraphics[width=0.35\linewidth]{BA0.jpg}
+	\includegraphics[,width=0.35\linewidth]{BA1.jpg}
+\end{center}
+
+\begin{center}
+	\includegraphics[width=0.35\linewidth]{BA2.jpg}
+	
+\end{center}
+
+Es posible observar la compleja estructura que nos indica que existe una alta dependencia de las condiciones 
+iniciales.
+}
+
+\end{poster}
+\end{document}
